@@ -1,24 +1,23 @@
 from ..PageObjects.loginPage import LoginPage
 from ..TestData.login_data import *
 from pytest import mark
+import time
 
 
-@mark.skip
-def test_sign_in_positive(chrome_driver):
-    driver = chrome_driver
-    login_page = LoginPage(driver=driver)
-    login_page.go_to()
-    login_page.user_name_input.sendText(correct_user.username)
-    login_page.user_password_input.sendText(correct_user.password)
-    login_page.sign_in_button.click()
-    assert driver.current_url == 'https://training-suite.ppro.dev/', "Url didn't change, log in failed"
+@mark.login
+class LoginTests:
+    def test_sign_in_positive(self, chrome_driver):
+        login_page = LoginPage(driver=chrome_driver)
+        login_page.go_to()
+        login_page.log_in(correct_user.username, correct_user.password)
+        assert (
+            chrome_driver.current_url == after_login_url
+        ), "Url didn't change, log in failed"
 
-
-def test_sign_in_negative(chrome_driver):
-    driver = chrome_driver
-    login_page = LoginPage(driver=driver)
-    login_page.go_to()
-    login_page.user_name_input.sendText(incorrect_user.username)
-    login_page.user_password_input.sendText(incorrect_user.password)
-    login_page.sign_in_button.click()
-    assert login_page.login_error_alert.checkVisibility()
+    def test_sign_in_negative(self, chrome_driver):
+        login_page = LoginPage(driver=chrome_driver)
+        login_page.go_to()
+        login_page.log_in(incorrect_user.username, incorrect_user.password)
+        assert (
+            login_page.login_error_alert.checkVisibility()
+        ), "Login error alert didn't appear"

@@ -13,13 +13,15 @@ class BaseElement(object):
 
     def find_element(self):
         self.web_element = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located(self.locator), message="Element not found")
+            EC.visibility_of_element_located(self.locator),
+            message=f"Element {self.value} not found",
+        )
 
     def click(self):
         element = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self.locator))
+            EC.element_to_be_clickable(self.locator), message="Element is not clickable"
+        )
         element.click()
-        return None
 
     def text(self):
         return self.web_element.text
@@ -27,7 +29,6 @@ class BaseElement(object):
     def sendText(self, text):
         self.web_element.clear()
         self.web_element.send_keys(text)
-        return None
 
     def checkVisibility(self):
         return self.web_element.is_displayed()
