@@ -21,11 +21,19 @@ class HomePage(BasePage):
             value="a[data-original-title='Courses/Sessions']",
         )
 
-    def find_session(self, session):
+    @property
+    def materials_button(self):
+        return BaseElement(
+            driver=self.driver,
+            by=By.CSS_SELECTOR,
+            value="a[data-original-title='Materials']",
+        )
+
+    def find_element_in_dropdown(self, element):
         return BaseElement(
             driver=self.driver,
             by=By.XPATH,
-            value=f"//li/a[contains(text(),'{session}')]",
+            value=f"//li/a[contains(text(),'{element}')]",
         )
 
     @property
@@ -33,5 +41,5 @@ class HomePage(BasePage):
         return BaseElement(
             driver=self.driver,
             by=By.CSS_SELECTOR,
-            value="h2.display-4",
+            value="h2",
         )

@@ -13,7 +13,7 @@ def chrome_driver():
     driver.quit()
 
 
-@fixture
+@fixture()
 def login(chrome_driver):
     login_page = LoginPage(driver=chrome_driver)
     login_page.go_to()

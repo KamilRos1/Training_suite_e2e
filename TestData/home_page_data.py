@@ -14,3 +14,9 @@ sections = [
     "OOP",
     "System libs #1",
 ]
+materials_param = [
+    ("Slides", "All slides"),
+    ("Resources", "All available resources"),
+    ("Hometasks", "All hometasks"),
+    ("Quizzes", "Quizzes"),
+]
