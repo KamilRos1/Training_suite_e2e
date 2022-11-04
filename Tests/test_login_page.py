@@ -1,5 +1,5 @@
-from ..PageObjects.loginPage import LoginPage
-from ..TestData.login_data import *
+from ..src.page_objects.loginPage import LoginPage
+from ..src.test_data.login_data import *
 import pytest
 import time
 

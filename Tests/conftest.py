@@ -1,7 +1,7 @@
 from pytest import fixture
 from selenium import webdriver
-from .PageObjects.loginPage import LoginPage
-from .TestData.login_data import correct_user
+from ..src.page_objects.loginPage import LoginPage
+from ..src.test_data.login_data import correct_user
 
 
 @fixture(scope="class")

@@ -1,7 +1,7 @@
-from ..Base.base_element import BaseElement
-from ..Base.base_page import BasePage
+from ..base.base_element import BaseElement
+from ..base.base_page import BasePage
 from selenium.webdriver.common.by import By
-from ..TestData.login_data import after_login_url
+from ..test_data.login_data import after_login_url
 
 
 class HomePage(BasePage):

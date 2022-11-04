@@ -1,5 +1,5 @@
-from ..PageObjects.homePage import HomePage
-from ..TestData.home_page_data import *
+from ..src.page_objects.homePage import HomePage
+from ..src.test_data.home_page_data import *
 from pytest import mark
 import time
 from selenium.webdriver.common.action_chains import ActionChains
