@@ -4,16 +4,17 @@ from .PageObjects.loginPage import LoginPage
 from .TestData.login_data import correct_user
 
 
-@fixture
-def chrome_driver():
+@fixture(scope="class")
+def chrome_driver(request):
     options = webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     driver = webdriver.Chrome(options=options)
+    request.cls.driver = driver
     yield driver
     driver.quit()
 
 
-@fixture()
+@fixture(scope="class")
 def login(chrome_driver):
     login_page = LoginPage(driver=chrome_driver)
     login_page.go_to()
